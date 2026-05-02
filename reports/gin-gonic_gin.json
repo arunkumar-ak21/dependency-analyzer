@@ -1,0 +1,291 @@
+{
+  "repository": "gin-gonic/gin",
+  "analyzed_at": "2026-05-02T17:22:42.314346+00:00",
+  "repo_info": {
+    "name": "gin-gonic/gin",
+    "description": "Gin is a high-performance HTTP web framework written in Go. It provides a Martini-like API but with significantly better performance—up to 40 times faster—thanks to httprouter. Gin is designed for building REST APIs, web applications, and microservices.",
+    "language": "Go",
+    "stargazers_count": 88427,
+    "forks_count": 8594,
+    "open_issues_count": 683,
+    "default_branch": "master",
+    "license": "MIT",
+    "archived": false
+  },
+  "ecosystems": {
+    "go": {
+      "manifest_files": [
+        "go.mod"
+      ],
+      "has_lock_file": true,
+      "indicator_count": 2
+    }
+  },
+  "dependencies": [
+    {
+      "name": "github.com/bytedance/sonic",
+      "version_constraint": "v1.15.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/gin-contrib/sse",
+      "version_constraint": "v1.1.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/go-playground/validator/v10",
+      "version_constraint": "v10.30.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/goccy/go-json",
+      "version_constraint": "v0.10.6",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/goccy/go-yaml",
+      "version_constraint": "v1.19.2",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/json-iterator/go",
+      "version_constraint": "v1.1.12",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/mattn/go-isatty",
+      "version_constraint": "v0.0.20",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/modern-go/reflect2",
+      "version_constraint": "v1.0.2",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/pelletier/go-toml/v2",
+      "version_constraint": "v2.2.4",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/quic-go/quic-go",
+      "version_constraint": "v0.59.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/stretchr/testify",
+      "version_constraint": "v1.11.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/ugorji/go/codec",
+      "version_constraint": "v1.3.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "go.mongodb.org/mongo-driver/v2",
+      "version_constraint": "v2.5.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "golang.org/x/net",
+      "version_constraint": "v0.52.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "google.golang.org/protobuf",
+      "version_constraint": "v1.36.11",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    },
+    {
+      "name": "github.com/bytedance/gopkg",
+      "version_constraint": "v0.1.3",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/bytedance/sonic/loader",
+      "version_constraint": "v0.5.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/cloudwego/base64x",
+      "version_constraint": "v0.1.6",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/davecgh/go-spew",
+      "version_constraint": "v1.1.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/gabriel-vasile/mimetype",
+      "version_constraint": "v1.4.13",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/go-playground/locales",
+      "version_constraint": "v0.14.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/go-playground/universal-translator",
+      "version_constraint": "v0.18.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/klauspost/cpuid/v2",
+      "version_constraint": "v2.3.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/kr/text",
+      "version_constraint": "v0.2.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/leodido/go-urn",
+      "version_constraint": "v1.4.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/modern-go/concurrent",
+      "version_constraint": "v0.0.0-20180306012644-bacd9c7ef1dd",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/pmezard/go-difflib",
+      "version_constraint": "v1.0.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/quic-go/qpack",
+      "version_constraint": "v0.6.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "github.com/twitchyliquid64/golang-asm",
+      "version_constraint": "v0.15.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "go.uber.org/mock",
+      "version_constraint": "v0.6.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "golang.org/x/arch",
+      "version_constraint": "v0.25.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "golang.org/x/crypto",
+      "version_constraint": "v0.49.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "golang.org/x/sys",
+      "version_constraint": "v0.42.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "golang.org/x/text",
+      "version_constraint": "v0.35.0",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "gopkg.in/yaml.v3",
+      "version_constraint": "v3.0.1",
+      "source_file": "go.mod",
+      "pinning_type": "exact",
+      "is_dev": false
+    }
+  ],
+  "health": {
+    "score": 96,
+    "risk_level": "LOW",
+    "breakdown": {
+      "pinning_quality": 40.0,
+      "range_tightness": 20.0,
+      "count_risk": 10.5,
+      "outdated_flags": 15,
+      "completeness": 10.0
+    },
+    "summary_stats": {
+      "total_dependencies": 35,
+      "production_deps": 16,
+      "dev_deps": 19,
+      "pinned_count": 35,
+      "unpinned_count": 0,
+      "pinning_ratio": 1.0
+    }
+  },
+  "errors": []
+}

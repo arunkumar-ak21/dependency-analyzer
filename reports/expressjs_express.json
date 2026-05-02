@@ -1,0 +1,354 @@
+{
+  "repository": "expressjs/express",
+  "analyzed_at": "2026-05-02T17:22:31.836498+00:00",
+  "repo_info": {
+    "name": "expressjs/express",
+    "description": "Fast, unopinionated, minimalist web framework for node.",
+    "language": "JavaScript",
+    "stargazers_count": 68979,
+    "forks_count": 23222,
+    "open_issues_count": 210,
+    "default_branch": "master",
+    "license": "MIT",
+    "archived": false
+  },
+  "ecosystems": {
+    "node": {
+      "manifest_files": [
+        "package.json"
+      ],
+      "has_lock_file": false,
+      "indicator_count": 1
+    }
+  },
+  "dependencies": [
+    {
+      "name": "accepts",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "body-parser",
+      "version_constraint": "^2.2.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "content-disposition",
+      "version_constraint": "^1.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "content-type",
+      "version_constraint": "^1.0.5",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "cookie",
+      "version_constraint": "^0.7.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "cookie-signature",
+      "version_constraint": "^1.2.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "debug",
+      "version_constraint": "^4.4.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "depd",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "encodeurl",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "escape-html",
+      "version_constraint": "^1.0.3",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "etag",
+      "version_constraint": "^1.8.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "finalhandler",
+      "version_constraint": "^2.1.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "fresh",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "http-errors",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "merge-descriptors",
+      "version_constraint": "^2.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "mime-types",
+      "version_constraint": "^3.0.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "on-finished",
+      "version_constraint": "^2.4.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "once",
+      "version_constraint": "^1.4.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "parseurl",
+      "version_constraint": "^1.3.3",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "proxy-addr",
+      "version_constraint": "^2.0.7",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "qs",
+      "version_constraint": "^6.14.2",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "range-parser",
+      "version_constraint": "^1.2.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "router",
+      "version_constraint": "^2.2.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "send",
+      "version_constraint": "^1.1.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "serve-static",
+      "version_constraint": "^2.2.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "statuses",
+      "version_constraint": "^2.0.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "type-is",
+      "version_constraint": "^2.0.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "vary",
+      "version_constraint": "^1.1.2",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": false
+    },
+    {
+      "name": "after",
+      "version_constraint": "0.8.2",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "connect-redis",
+      "version_constraint": "^8.0.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "cookie-parser",
+      "version_constraint": "1.4.7",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "cookie-session",
+      "version_constraint": "2.1.1",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "ejs",
+      "version_constraint": "^3.1.10",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "eslint",
+      "version_constraint": "8.47.0",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "express-session",
+      "version_constraint": "^1.18.1",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "hbs",
+      "version_constraint": "4.2.0",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "marked",
+      "version_constraint": "^15.0.3",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "method-override",
+      "version_constraint": "3.0.0",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "mocha",
+      "version_constraint": "^10.7.3",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "morgan",
+      "version_constraint": "1.10.1",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "nyc",
+      "version_constraint": "^17.1.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "pbkdf2-password",
+      "version_constraint": "1.2.1",
+      "source_file": "package.json",
+      "pinning_type": "exact",
+      "is_dev": true
+    },
+    {
+      "name": "supertest",
+      "version_constraint": "^6.3.0",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    },
+    {
+      "name": "vhost",
+      "version_constraint": "~3.0.2",
+      "source_file": "package.json",
+      "pinning_type": "compatible",
+      "is_dev": true
+    }
+  ],
+  "health": {
+    "score": 84,
+    "risk_level": "LOW",
+    "breakdown": {
+      "pinning_quality": 33.5,
+      "range_tightness": 20.0,
+      "count_risk": 10.5,
+      "outdated_flags": 14.6,
+      "completeness": 5.0
+    },
+    "summary_stats": {
+      "total_dependencies": 44,
+      "production_deps": 28,
+      "dev_deps": 16,
+      "pinned_count": 44,
+      "unpinned_count": 0,
+      "pinning_ratio": 0.836
+    }
+  },
+  "errors": []
+}

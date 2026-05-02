@@ -19,6 +19,7 @@ Usage examples::
 """
 
 import argparse
+import io
 import logging
 import os
 import sys
@@ -82,12 +83,12 @@ def analyze_repo(client: GitHubClient, repo: str) -> dict:
     }
 
     # Step 1: Repo metadata
-    print(f"  {_c('→', 'dim')} Fetching repository info…")
+    print(f"  {_c('->', 'dim')} Fetching repository info...")
     repo_info = client.get_repo_info(repo)
     if repo_info is None:
         msg = f"Repository '{repo}' not found on GitHub."
         result["errors"].append(msg)
-        print(f"  {_c('✗', 'red')} {msg}")
+        print(f"  {_c('[X]', 'red')} {msg}")
         return result
 
     result["repo_info"] = {
@@ -101,21 +102,21 @@ def analyze_repo(client: GitHubClient, repo: str) -> dict:
         "license": (repo_info.get("license") or {}).get("spdx_id", "N/A"),
         "archived": repo_info.get("archived", False),
     }
-    print(f"  {_c('✓', 'green')} {result['repo_info']['name']} "
-          f"★ {result['repo_info']['stargazers_count']:,}  "
+    print(f"  {_c('[OK]', 'green')} {result['repo_info']['name']} "
+          f"* {result['repo_info']['stargazers_count']:,}  "
           f"({result['repo_info']['language'] or 'unknown lang'})")
 
     # Step 2: List root contents
-    print(f"  {_c('→', 'dim')} Listing root directory…")
+    print(f"  {_c('->', 'dim')} Listing root directory...")
     root_files = client.get_repo_root_contents(repo)
     if root_files is None:
         msg = "Could not list repository root contents."
         result["errors"].append(msg)
-        print(f"  {_c('✗', 'red')} {msg}")
+        print(f"  {_c('[X]', 'red')} {msg}")
         return result
 
     # Step 3: Detect ecosystems
-    print(f"  {_c('→', 'dim')} Detecting ecosystems…")
+    print(f"  {_c('->', 'dim')} Detecting ecosystems...")
     detector = EcosystemDetector()
     ecosystems = detector.detect(root_files)
     result["ecosystems"] = ecosystems
@@ -123,12 +124,12 @@ def analyze_repo(client: GitHubClient, repo: str) -> dict:
     if not ecosystems:
         msg = "No supported dependency manifests found in the repo root."
         result["errors"].append(msg)
-        print(f"  {_c('!', 'yellow')} {msg}")
+        print(f"  {_c('[!]', 'yellow')} {msg}")
         # Still compute score (will be 0)
 
     for eco_name, eco_info in ecosystems.items():
-        print(f"  {_c('✓', 'green')} Ecosystem: {_c(eco_name.upper(), 'bold')} "
-              f"— manifests: {', '.join(eco_info['manifest_files'])}")
+        print(f"  {_c('[OK]', 'green')} Ecosystem: {_c(eco_name.upper(), 'bold')} "
+              f"-- manifests: {', '.join(eco_info['manifest_files'])}")
 
     # Step 4: Fetch and parse manifests
     all_deps = []
@@ -145,27 +146,27 @@ def analyze_repo(client: GitHubClient, repo: str) -> dict:
             any_lock = True
 
         for manifest in eco_info["manifest_files"]:
-            print(f"  {_c('→', 'dim')} Parsing {manifest}…")
+            print(f"  {_c('->', 'dim')} Parsing {manifest}...")
             content = client.get_file_content(repo, manifest)
             if content is None:
                 msg = f"Could not fetch {manifest}"
                 result["errors"].append(msg)
-                print(f"  {_c('✗', 'red')} {msg}")
+                print(f"  {_c('[X]', 'red')} {msg}")
                 continue
             try:
                 deps = parser.parse(content, manifest)
                 all_deps.extend(deps)
-                print(f"  {_c('✓', 'green')} Found {len(deps)} dependencies in {manifest}")
+                print(f"  {_c('[OK]', 'green')} Found {len(deps)} dependencies in {manifest}")
             except Exception as exc:
                 msg = f"Parser error in {manifest}: {exc}"
                 result["errors"].append(msg)
-                print(f"  {_c('✗', 'red')} {msg}")
+                print(f"  {_c('[X]', 'red')} {msg}")
                 logger.exception("Parser error for %s/%s", repo, manifest)
 
     result["dependencies"] = [d.to_dict() for d in all_deps]
 
     # Step 5: Health score
-    print(f"  {_c('→', 'dim')} Computing health score…")
+    print(f"  {_c('->', 'dim')} Computing health score...")
     scorer = HealthScorer()
     health = scorer.score(
         all_deps,
@@ -176,10 +177,10 @@ def analyze_repo(client: GitHubClient, repo: str) -> dict:
 
     risk = health["risk_level"]
     risk_color = {"LOW": "green", "MEDIUM": "yellow", "HIGH": "red"}.get(risk, "dim")
-    print(f"  {_c('★', risk_color)} Health Score: "
+    print(f"  {_c('*', risk_color)} Health Score: "
           f"{_c(str(health['score']), 'bold')}/100 "
           f"[{_c(risk, risk_color)}]")
-    print(f"  {_c('→', 'dim')} {health['summary_stats']['total_dependencies']} total deps, "
+    print(f"  {_c('->', 'dim')} {health['summary_stats']['total_dependencies']} total deps, "
           f"{health['summary_stats']['pinned_count']} pinned, "
           f"{health['summary_stats']['unpinned_count']} unpinned")
 
@@ -211,6 +212,11 @@ def load_batch_file(path: str) -> list[str]:
 # Main
 # ======================================================================
 def main() -> None:
+    # Force UTF-8 on Windows to avoid cp1252 encoding crashes
+    if sys.platform == "win32":
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
     parser = argparse.ArgumentParser(
         prog="repo-dep-analyzer",
         description=(
@@ -297,14 +303,14 @@ def main() -> None:
               f"{rl['remaining']}/{rl['limit']} remaining "
               f"(resets {rl['reset_utc']})")
     except GitHubAPIError:
-        print(f"{_c('!', 'yellow')} Could not check rate limit.")
+        print(f"{_c('[!]', 'yellow')} Could not check rate limit.")
 
     # ---- Banner ----
-    print(f"\n{'━'*60}")
+    print(f"\n{'='*60}")
     print(f"  {_c('Repository Dependency Analyzer', 'bold')} v{__version__}")
     print(f"  Repos to analyze: {len(repos)}")
     print(f"  Output directory: {os.path.abspath(args.output)}")
-    print(f"{'━'*60}")
+    print(f"{'='*60}")
 
     # ---- Analyze ----
     results = []
@@ -315,35 +321,35 @@ def main() -> None:
         try:
             analysis = analyze_repo(client, repo)
             json_path, md_path = reporter.generate(analysis)
-            print(f"  {_c('📄', 'green')} Reports saved:")
-            print(f"     JSON → {json_path}")
-            print(f"     MD   → {md_path}")
+            print(f"  {_c('[SAVED]', 'green')} Reports saved:")
+            print(f"     JSON -> {json_path}")
+            print(f"     MD   -> {md_path}")
             results.append(analysis)
         except RateLimitError as exc:
-            print(f"\n{_c('✗ Rate limit exhausted:', 'red')} {exc}")
+            print(f"\n{_c('[X] Rate limit exhausted:', 'red')} {exc}")
             print("Stopping batch. Re-run later or provide a GITHUB_TOKEN.")
             break
         except GitHubAPIError as exc:
-            print(f"\n{_c('✗ API error:', 'red')} {exc}")
+            print(f"\n{_c('[X] API error:', 'red')} {exc}")
             results.append({"repository": repo, "error": str(exc)})
         except Exception as exc:
-            print(f"\n{_c('✗ Unexpected error:', 'red')} {exc}")
+            print(f"\n{_c('[X] Unexpected error:', 'red')} {exc}")
             logger.exception("Unexpected error analyzing %s", repo)
             results.append({"repository": repo, "error": str(exc)})
 
     # ---- Summary ----
     elapsed = time.time() - start_time
-    print(f"\n{'━'*60}")
+    print(f"\n{'='*60}")
     print(f"  {_c('Analysis Complete', 'bold')}")
     print(f"  Repos analyzed : {len(results)}/{len(repos)}")
     print(f"  Time elapsed   : {elapsed:.1f}s")
     print(f"  Reports in     : {os.path.abspath(args.output)}/")
-    print(f"{'━'*60}")
+    print(f"{'='*60}")
 
     # Print summary table
     if results:
         print(f"\n  {'Repository':<40} {'Score':>6}  {'Risk':<8}  {'Deps':>5}")
-        print(f"  {'─'*40} {'─'*6}  {'─'*8}  {'─'*5}")
+        print(f"  {'-'*40} {'-'*6}  {'-'*8}  {'-'*5}")
         for r in results:
             repo = r.get("repository", "?")
             h = r.get("health", {})
