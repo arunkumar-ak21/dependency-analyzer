@@ -1,0 +1,31 @@
+# ===========================================================
+# Sample Repository List for Batch Analysis
+# ===========================================================
+# Format: owner/repo (one per line)
+# Lines starting with '#' are comments and will be ignored.
+# Blank lines are also ignored.
+# ===========================================================
+
+# Python projects
+django/django
+pallets/flask
+psf/requests
+
+# Node.js projects
+expressjs/express
+axios/axios
+
+# Java projects
+spring-projects/spring-framework
+
+# Go projects
+gin-gonic/gin
+
+# Ruby projects
+rails/rails
+
+# Rust projects
+servo/servo
+
+# PHP projects
+laravel/laravel
